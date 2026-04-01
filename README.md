@@ -4,7 +4,7 @@ This lab combines two assignments that together cover the full picture of LLM in
 
 ---
 
-## Part 1 — Optimizing LLM Inference with KV-Caching (100 points)
+## Part 1 — Optimizing LLM Inference with KV-Caching (80 points)
 
 **Notebook:** `part1/lab4_part1.ipynb`
 
@@ -12,10 +12,9 @@ Implement KV-caching for a nanoGPT-style transformer and benchmark the speedup. 
 
 | Step | Topic | Points |
 |------|-------|--------|
-| Step 1 | Understanding Self-Attention (Q1–Q4) | 10 |
-| Step 2 | Benchmarking Baseline Generation (Q5–Q6) | 10 |
+| Step 1 | Understanding Self-Attention (Q1–Q4) | 15 |
+| Step 2 | Benchmarking Baseline Generation (Q5–Q6) | 15 |
 | Step 3 | Implementing & Benchmarking KV-Caching (Q7–Q9) | 50 |
-| Step 4 | Evaluation | 30 |
 
 Answer all questions directly in the notebook markdown cells provided. Use `output_check()` in the notebook to validate your KV-cache implementation before submitting.
 
