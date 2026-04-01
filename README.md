@@ -15,7 +15,7 @@ Implement KV-caching for a nanoGPT-style transformer and benchmark the speedup. 
 | Step 1 | Understanding Self-Attention (Q1–Q4) | 10 |
 | Step 2 | Benchmarking Baseline Generation (Q5–Q6) | 10 |
 | Step 3 | Implementing & Benchmarking KV-Caching (Q7–Q9) | 50 |
-| Step 4 | Evaluation (run on our GPUs) | 30 |
+| Step 4 | Evaluation | 30 |
 
 Answer all questions directly in the notebook markdown cells provided. Use `output_check()` in the notebook to validate your KV-cache implementation before submitting.
 
