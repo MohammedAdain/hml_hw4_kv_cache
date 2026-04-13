@@ -98,8 +98,8 @@ python bench_llm_ops.py --bench attn --stage prefill --batch 16 --seq-len 256
 python bench_llm_ops.py --bench attn --stage prefill --batch 16 --seq-len 256 --fused
 ```
 
-- **Q7 (10 pt):** Submit your prefill attention implementation. Benchmark regular attention for `seq_len=[256,512,1024,2048,4096,8192,12288,16384]` with fixed `batch=16` and `batch=[1,4,8,16,32]` with fixed `seq_len=256`. Skip OOM cases. Plot throughput vs. intensity (color per batch). Explain.
-- **Q8 (10 pt):** Benchmark fused attention. Compute speedup vs. regular attention. Plot speedup line chart (color per batch). Explain.
+- **Q7 (10 pt):** Submit your prefill attention implementation. Benchmark regular attention for `seq_len=[256,512,1024,2048,4096,8192,12288,16384]` with fixed `batch=16` and `batch=[1,4,8,16,32]` with fixed `seq_len=256`. Skip OOM cases. Plot throughput vs. intensity. Explain.
+- **Q8 (10 pt):** Benchmark fused attention. Compute speedup vs. regular attention. Plot speedup line chart. Explain.
 
 #### B.2 Attention — Decode Stage (30 pt)
 
