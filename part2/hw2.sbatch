@@ -6,7 +6,7 @@
 #SBATCH -t1:00:00                         # Duration of the job (1 hour)
 #SBATCH -o output.%J.log                  # Output file
 #SBATCH --mail-type=BEGIN,END,FAIL        # Mail preferences
-#SBATCH --mail-user=YOUR_EMAIL@gatech.edu # Replace with your GT email
+#SBATCH --mail-user=madain3@gatech.edu # Replace with your GT email
 
 # Load the PyTorch container module (includes torch, matplotlib, numpy)
 module load pytorch
@@ -14,7 +14,14 @@ module load pytorch
 # ── Edit the command below to run the script you want ────────────────────────
 
 # Example: Prefill profiling
+# 256,512,1024,2048,4096,8192,12288
+python bench_llama.py --stage prefill --batch 1 --seq-len 256
+python bench_llama.py --stage prefill --batch 1 --seq-len 512
 python bench_llama.py --stage prefill --batch 1 --seq-len 1024
+python bench_llama.py --stage prefill --batch 1 --seq-len 2048
+python bench_llama.py --stage prefill --batch 1 --seq-len 4096
+python bench_llama.py --stage prefill --batch 1 --seq-len 8192
+python bench_llama.py --stage prefill --batch 1 --seq-len 12288
 
 # Example: Decode profiling (uncomment after completing the Solution Block)
 # python bench_llama.py --stage decode --batch 1 --seq-len 1024
