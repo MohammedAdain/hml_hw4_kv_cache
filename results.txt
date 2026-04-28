@@ -1,0 +1,208 @@
+Prefill
+for i in {256,512,1024,2048,4096,8192,12288}; do echo $i; CUDA_VISIBLE_DEVICES=3 python bench_llama.py --stage prefill --batch 1 --seq-len $i; done                                                  ─╯
+256
+Running on device: cuda
+
+Prefill Stage Time Results (ms)
+Input size: Batch=1, Seq_len=256, Hidden_dim=4096
+ Self-Attn,       MLPs,       Misc,      Total
+     1.082,      1.817,      0.002,      2.900
+512
+Running on device: cuda
+
+Prefill Stage Time Results (ms)
+Input size: Batch=1, Seq_len=512, Hidden_dim=4096
+ Self-Attn,       MLPs,       Misc,      Total
+     2.028,      3.605,      0.000,      5.624
+1024
+Running on device: cuda
+
+Prefill Stage Time Results (ms)
+Input size: Batch=1, Seq_len=1024, Hidden_dim=4096
+ Self-Attn,       MLPs,       Misc,      Total
+     4.820,      8.006,      0.000,     11.842
+2048
+Running on device: cuda
+
+Prefill Stage Time Results (ms)
+Input size: Batch=1, Seq_len=2048, Hidden_dim=4096
+ Self-Attn,       MLPs,       Misc,      Total
+    11.496,     14.463,      0.000,     25.866
+4096
+Running on device: cuda
+
+Prefill Stage Time Results (ms)
+Input size: Batch=1, Seq_len=4096, Hidden_dim=4096
+ Self-Attn,       MLPs,       Misc,      Total
+    30.380,     28.685,      0.061,     59.126
+8192
+Running on device: cuda
+
+Prefill Stage Time Results (ms)
+Input size: Batch=1, Seq_len=8192, Hidden_dim=4096
+ Self-Attn,       MLPs,       Misc,      Total
+    92.856,     58.435,      0.726,    152.017
+12288
+Running on device: cuda
+
+Prefill Stage Time Results (ms)
+Input size: Batch=1, Seq_len=12288, Hidden_dim=4096
+ Self-Attn,       MLPs,       Misc,      Total
+   181.379,     91.927,      0.000,    273.196
+
+for batch in {1,2,4,8,16,32,64}; do echo $batch; CUDA_VISIBLE_DEVICES=3 python bench_llama.py --stage prefill --batch $batch --seq-len 1024; done                                                     ─╯
+1
+Running on device: cuda
+
+Prefill Stage Time Results (ms)
+Input size: Batch=1, Seq_len=1024, Hidden_dim=4096
+ Self-Attn,       MLPs,       Misc,      Total
+     4.797,      7.948,      0.000,     11.710
+2
+Running on device: cuda
+
+Prefill Stage Time Results (ms)
+Input size: Batch=2, Seq_len=1024, Hidden_dim=4096
+ Self-Attn,       MLPs,       Misc,      Total
+     9.035,     14.417,      0.334,     23.785
+4
+Running on device: cuda
+
+Prefill Stage Time Results (ms)
+Input size: Batch=4, Seq_len=1024, Hidden_dim=4096
+ Self-Attn,       MLPs,       Misc,      Total
+    18.542,     28.325,      0.267,     47.134
+8
+Running on device: cuda
+
+Prefill Stage Time Results (ms)
+Input size: Batch=8, Seq_len=1024, Hidden_dim=4096
+ Self-Attn,       MLPs,       Misc,      Total
+    37.744,     58.282,      0.384,     96.410
+16
+Running on device: cuda
+
+Prefill Stage Time Results (ms)
+Input size: Batch=16, Seq_len=1024, Hidden_dim=4096
+ Self-Attn,       MLPs,       Misc,      Total
+    77.955,    122.744,      1.484,    202.182
+32
+Running on device: cuda
+
+Prefill Stage Time Results (ms)
+Input size: Batch=32, Seq_len=1024, Hidden_dim=4096
+ Self-Attn,       MLPs,       Misc,      Total
+   161.335,    249.714,      2.815,    413.864
+64
+Running on device: cuda
+
+Prefill Stage Time Results (ms)
+Input size: Batch=64, Seq_len=1024, Hidden_dim=4096
+ Self-Attn,       MLPs,       Misc,      Total
+   321.155,    499.385,      7.177,    827.716
+
+------------------------------------------------------------------------
+
+Decode
+
+for i in {256,512,1024,2048,4096,8192,12288}; do echo $i; CUDA_VISIBLE_DEVICES=3 python bench_llama.py --stage decode --batch 1 --seq-len $i; done                                                   ─╯
+256
+Running on device: cuda
+
+Decode Stage Time Results (ms)
+Input size: Batch=1, Seq_len=256, Hidden_dim=4096
+ Self-Attn,       MLPs,       Misc,      Total
+     0.226,      0.185,      0.000,      0.402
+512
+Running on device: cuda
+
+Decode Stage Time Results (ms)
+Input size: Batch=1, Seq_len=512, Hidden_dim=4096
+ Self-Attn,       MLPs,       Misc,      Total
+     0.253,      0.189,      0.000,      0.414
+1024
+Running on device: cuda
+
+Decode Stage Time Results (ms)
+Input size: Batch=1, Seq_len=1024, Hidden_dim=4096
+ Self-Attn,       MLPs,       Misc,      Total
+     0.228,      0.189,      0.020,      0.437
+2048
+Running on device: cuda
+
+Decode Stage Time Results (ms)
+Input size: Batch=1, Seq_len=2048, Hidden_dim=4096
+ Self-Attn,       MLPs,       Misc,      Total
+     0.239,      0.188,      0.039,      0.466
+4096
+Running on device: cuda
+
+Decode Stage Time Results (ms)
+Input size: Batch=1, Seq_len=4096, Hidden_dim=4096
+ Self-Attn,       MLPs,       Misc,      Total
+     0.298,      0.189,      0.041,      0.528
+8192
+Running on device: cuda
+
+Decode Stage Time Results (ms)
+Input size: Batch=1, Seq_len=8192, Hidden_dim=4096
+ Self-Attn,       MLPs,       Misc,      Total
+     0.421,      0.189,      0.037,      0.646
+12288
+Running on device: cuda
+
+Decode Stage Time Results (ms)
+Input size: Batch=1, Seq_len=12288, Hidden_dim=4096
+ Self-Attn,       MLPs,       Misc,      Total
+     0.543,      0.189,      0.040,      0.772
+
+for batch in {1,2,4,8,16,32,64}; do echo $batch; CUDA_VISIBLE_DEVICES=3 python bench_llama.py --stage decode --batch $batch --seq-len 1024; done                                                      ─╯
+1
+Running on device: cuda
+
+Decode Stage Time Results (ms)
+Input size: Batch=1, Seq_len=1024, Hidden_dim=4096
+ Self-Attn,       MLPs,       Misc,      Total
+     0.222,      0.188,      0.019,      0.429
+2
+Running on device: cuda
+
+Decode Stage Time Results (ms)
+Input size: Batch=2, Seq_len=1024, Hidden_dim=4096
+ Self-Attn,       MLPs,       Misc,      Total
+     0.253,      0.216,      0.044,      0.513
+4
+Running on device: cuda
+
+Decode Stage Time Results (ms)
+Input size: Batch=4, Seq_len=1024, Hidden_dim=4096
+ Self-Attn,       MLPs,       Misc,      Total
+     0.328,      0.262,      0.048,      0.638
+8
+Running on device: cuda
+
+Decode Stage Time Results (ms)
+Input size: Batch=8, Seq_len=1024, Hidden_dim=4096
+ Self-Attn,       MLPs,       Misc,      Total
+     0.522,      0.346,      0.053,      0.921
+16
+Running on device: cuda
+
+Decode Stage Time Results (ms)
+Input size: Batch=16, Seq_len=1024, Hidden_dim=4096
+ Self-Attn,       MLPs,       Misc,      Total
+     0.803,      0.373,      0.034,      1.210
+32
+Running on device: cuda
+
+Decode Stage Time Results (ms)
+Input size: Batch=32, Seq_len=1024, Hidden_dim=4096
+ Self-Attn,       MLPs,       Misc,      Total
+     1.434,      0.487,      0.016,      1.936
+64
+Running on device: cuda
+
+Decode Stage Time Results (ms)
+Input size: Batch=64, Seq_len=1024, Hidden_dim=4096
+ Self-Attn,       MLPs,       Misc,      Total
+     2.675,      0.550,      0.065,      3.291

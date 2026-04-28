@@ -118,7 +118,7 @@ def bench_attn_prefill(
         #    Result shape: (batch, num_heads, seq_len, seq_len)
         _sync(device)
         t0 = time.perf_counter()
-        scores = None   # ← implement: Q @ K^T * scale
+        scores = torch.matmul(Q, K.transpose(-2, -1)) * scale   # ← implement: Q @ K^T * scale
         _sync(device)
         qkt_ms = (time.perf_counter() - t0) * 1e3
 
@@ -126,14 +126,14 @@ def bench_attn_prefill(
         #    Use masked_fill with causal_mask
         _sync(device)
         t0 = time.perf_counter()
-        masked = None   # ← implement: apply causal_mask to scores
+        masked = scores.masked_fill(causal_mask, float('-inf'))   # ← implement: apply causal_mask to scores
         _sync(device)
         mask_ms = (time.perf_counter() - t0) * 1e3
 
         # 3. Softmax — normalize attention weights over the last dimension
         _sync(device)
         t0 = time.perf_counter()
-        weights = None  # ← implement: softmax of masked scores
+        weights = F.softmax(masked, dim=-1)  # ← implement: softmax of masked scores
         _sync(device)
         softmax_ms = (time.perf_counter() - t0) * 1e3
 
@@ -141,7 +141,7 @@ def bench_attn_prefill(
         #    Result shape: (batch, num_heads, seq_len, head_dim)
         _sync(device)
         t0 = time.perf_counter()
-        output = None   # ← implement: weights @ V
+        output = torch.matmul(weights, V)   # ← implement: weights @ V
         _sync(device)
         attn_v_ms = (time.perf_counter() - t0) * 1e3
 
@@ -200,29 +200,32 @@ def bench_attn_decode(
     # Then implement and time each step (same pattern as prefill, but no masking).
 
     # 0. Declare KV-cache tensors
-    Q = None   # ← implement
-    K = None   # ← implement
-    V = None   # ← implement
+    Q_new = torch.randn(batch, num_heads, 1, head_dim, device=device)
+    K_cache = torch.randn(batch, num_heads, seq_len, head_dim, device=device)
+    V_cache = torch.randn(batch, num_heads, seq_len, head_dim, device=device)
+    Q = Q_new   # ← implement
+    K = K_cache   # ← implement
+    V = V_cache  # ← implement
 
     with torch.no_grad():
         # 1. Q·K^T — shape (batch, num_heads, 1, seq_len)
         _sync(device)
         t0 = time.perf_counter()
-        scores = None   # ← implement: Q @ K^T * scale
+        scores = torch.matmul(Q, K.transpose(-2, -1)) * scale   # ← implement: Q @ K^T * scale
         _sync(device)
         qkt_ms = (time.perf_counter() - t0) * 1e3
 
         # 2. Softmax — normalize over the last dimension
         _sync(device)
         t0 = time.perf_counter()
-        weights = None  # ← implement: softmax of scores
+        weights = F.softmax(scores, dim=-1)  # ← implement: softmax of scores
         _sync(device)
         softmax_ms = (time.perf_counter() - t0) * 1e3
 
         # 3. Attention · V — shape (batch, num_heads, 1, head_dim)
         _sync(device)
         t0 = time.perf_counter()
-        output = None   # ← implement: weights @ V
+        output = torch.matmul(weights, V)   # ← implement: weights @ V
         _sync(device)
         attn_v_ms = (time.perf_counter() - t0) * 1e3
 
