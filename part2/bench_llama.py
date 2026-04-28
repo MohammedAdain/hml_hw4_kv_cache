@@ -251,8 +251,8 @@ def bench_decode(batch: int, seq_len: int, device: torch.device) -> None:
     #
     # Store them as a tuple:  past_key_value = (past_k, past_v)
 
-    past_k = torch.randn(batch, NUM_HEADS, seq_len - 1, HEAD_DIM)
-    past_v = torch.randn(batch, NUM_HEADS, seq_len - 1, HEAD_DIM)
+    past_k = torch.randn(batch, NUM_HEADS, seq_len - 1, HEAD_DIM, device=device)
+    past_v = torch.randn(batch, NUM_HEADS, seq_len - 1, HEAD_DIM, device=device)
 
     past_key_value = (past_k, past_v)   # ← replace with real tensors
 
