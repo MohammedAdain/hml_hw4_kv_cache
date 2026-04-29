@@ -1,0 +1,394 @@
+Prefill
+
+for s in {256,512,1024,2048,4096,8192,12288,16384}; do echo $s; CUDA_VISIBLE_DEVICES=3 python bench_llm_ops.py --bench attn --stage prefill --batch 16 --seq-len $s; done                           ─╯
+256
+Running on device: cuda
+
+Benchmarking for Attention prefill stage in ms
+Input size: Batch=16, Seq_len=256, Num_heads=32, Embed_dim=128
+   Q_K^T,  Masking,  Softmax,   Attn_V,    Total
+  73.893,   40.196,   14.769,    0.758,  129.617
+512
+Running on device: cuda
+
+Benchmarking for Attention prefill stage in ms
+Input size: Batch=16, Seq_len=512, Num_heads=32, Embed_dim=128
+   Q_K^T,  Masking,  Softmax,   Attn_V,    Total
+  74.599,   40.209,   15.211,    1.353,  131.372
+1024
+Running on device: cuda
+
+Benchmarking for Attention prefill stage in ms
+Input size: Batch=16, Seq_len=1024, Num_heads=32, Embed_dim=128
+   Q_K^T,  Masking,  Softmax,   Attn_V,    Total
+  76.188,   41.289,   16.498,    3.595,  137.570
+2048
+Running on device: cuda
+
+Benchmarking for Attention prefill stage in ms
+Input size: Batch=16, Seq_len=2048, Num_heads=32, Embed_dim=128
+   Q_K^T,  Masking,  Softmax,   Attn_V,    Total
+  88.802,   46.969,   23.289,   12.811,  171.870
+4096
+Running on device: cuda
+
+for batch in {1,4,8,16,32}; do echo $batch; CUDA_VISIBLE_DEVICES=3 python bench_llm_ops.py --bench attn --stage prefill --batch $batch --seq-len 256; done                                          ─╯
+1
+Running on device: cuda
+
+Benchmarking for Attention prefill stage in ms
+Input size: Batch=1, Seq_len=256, Num_heads=32, Embed_dim=128
+   Q_K^T,  Masking,  Softmax,   Attn_V,    Total
+  71.084,   39.067,   14.068,    0.242,  124.460
+4
+Running on device: cuda
+
+Benchmarking for Attention prefill stage in ms
+Input size: Batch=4, Seq_len=256, Num_heads=32, Embed_dim=128
+   Q_K^T,  Masking,  Softmax,   Attn_V,    Total
+  51.249,   40.433,   14.852,    0.546,  107.081
+8
+Running on device: cuda
+
+Benchmarking for Attention prefill stage in ms
+Input size: Batch=8, Seq_len=256, Num_heads=32, Embed_dim=128
+   Q_K^T,  Masking,  Softmax,   Attn_V,    Total
+  73.929,   40.126,   14.709,    0.598,  129.362
+16
+Running on device: cuda
+
+Benchmarking for Attention prefill stage in ms
+Input size: Batch=16, Seq_len=256, Num_heads=32, Embed_dim=128
+   Q_K^T,  Masking,  Softmax,   Attn_V,    Total
+  74.039,   40.161,   14.856,    0.745,  129.801
+32
+Running on device: cuda
+
+Benchmarking for Attention prefill stage in ms
+Input size: Batch=32, Seq_len=256, Num_heads=32, Embed_dim=128
+   Q_K^T,  Masking,  Softmax,   Attn_V,    Total
+  74.761,   40.012,   14.884,    0.990,  130.647
+
+
+------
+Fused
+for s in {256,512,1024,2048,4096,8192,12288,16384}; do echo $s; CUDA_VISIBLE_DEVICES=3 python bench_llm_ops.py --bench attn --stage prefill --batch 16 --seq-len $s --fused; done                   ─╯
+256
+Running on device: cuda
+
+Benchmarking for Attention prefill stage in ms
+Input size: Batch=16, Seq_len=256, Num_heads=32, Embed_dim=128
+   Total
+   0.353
+512
+Running on device: cuda
+
+Benchmarking for Attention prefill stage in ms
+Input size: Batch=16, Seq_len=512, Num_heads=32, Embed_dim=128
+   Total
+   1.119
+1024
+Running on device: cuda
+
+Benchmarking for Attention prefill stage in ms
+Input size: Batch=16, Seq_len=1024, Num_heads=32, Embed_dim=128
+   Total
+   3.986
+2048
+Running on device: cuda
+
+Benchmarking for Attention prefill stage in ms
+Input size: Batch=16, Seq_len=2048, Num_heads=32, Embed_dim=128
+   Total
+  14.762
+4096
+Running on device: cuda
+
+Benchmarking for Attention prefill stage in ms
+Input size: Batch=16, Seq_len=4096, Num_heads=32, Embed_dim=128
+   Total
+  57.175
+8192
+Running on device: cuda
+
+Benchmarking for Attention prefill stage in ms
+Input size: Batch=16, Seq_len=8192, Num_heads=32, Embed_dim=128
+   Total
+ 224.517
+12288
+Running on device: cuda
+
+Benchmarking for Attention prefill stage in ms
+Input size: Batch=16, Seq_len=12288, Num_heads=32, Embed_dim=128
+   Total
+ 505.265
+16384
+Running on device: cuda
+
+Benchmarking for Attention prefill stage in ms
+Input size: Batch=16, Seq_len=16384, Num_heads=32, Embed_dim=128
+   Total
+ 902.383
+
+for batch in {1,4,8,16,32}; do echo $batch; CUDA_VISIBLE_DEVICES=3 python bench_llm_ops.py --bench attn --stage prefill --batch $batch --seq-len 256 --fused; done                                  ─╯
+1
+Running on device: cuda
+
+Benchmarking for Attention prefill stage in ms
+Input size: Batch=1, Seq_len=256, Num_heads=32, Embed_dim=128
+   Total
+   0.031
+4
+Running on device: cuda
+
+Benchmarking for Attention prefill stage in ms
+Input size: Batch=4, Seq_len=256, Num_heads=32, Embed_dim=128
+   Total
+   0.105
+8
+Running on device: cuda
+
+Benchmarking for Attention prefill stage in ms
+Input size: Batch=8, Seq_len=256, Num_heads=32, Embed_dim=128
+   Total
+   0.190
+16
+Running on device: cuda
+
+Benchmarking for Attention prefill stage in ms
+Input size: Batch=16, Seq_len=256, Num_heads=32, Embed_dim=128
+   Total
+   0.352
+32
+Running on device: cuda
+
+Benchmarking for Attention prefill stage in ms
+Input size: Batch=32, Seq_len=256, Num_heads=32, Embed_dim=128
+   Total
+   0.683
+
+=============================================================================
+
+Decode
+
+for s in {256,512,1024,2048,4096,8192,16384,32768}; do echo $s; CUDA_VISIBLE_DEVICES=3 python bench_llm_ops.py --bench attn --stage decode --batch 16 --seq-len $s; done                            ─╯
+256
+Running on device: cuda
+
+Benchmarking for Attention decode stage in ms
+Input size: Batch=16, Seq_len=256, Num_heads=32, Embed_dim=128
+   Q_K^T,  Softmax,   Attn_V,    Total
+  55.668,   13.822,    4.035,   73.525
+512
+Running on device: cuda
+
+Benchmarking for Attention decode stage in ms
+Input size: Batch=16, Seq_len=512, Num_heads=32, Embed_dim=128
+   Q_K^T,  Softmax,   Attn_V,    Total
+  54.061,   13.730,    4.065,   71.857
+1024
+Running on device: cuda
+
+Benchmarking for Attention decode stage in ms
+Input size: Batch=16, Seq_len=1024, Num_heads=32, Embed_dim=128
+   Q_K^T,  Softmax,   Attn_V,    Total
+  53.944,   13.847,    4.083,   71.873
+2048
+Running on device: cuda
+
+Benchmarking for Attention decode stage in ms
+Input size: Batch=16, Seq_len=2048, Num_heads=32, Embed_dim=128
+   Q_K^T,  Softmax,   Attn_V,    Total
+  54.195,   13.754,    0.354,   68.303
+4096
+Running on device: cuda
+
+Benchmarking for Attention decode stage in ms
+Input size: Batch=16, Seq_len=4096, Num_heads=32, Embed_dim=128
+   Q_K^T,  Softmax,   Attn_V,    Total
+  55.842,   14.397,    0.484,   70.723
+8192
+Running on device: cuda
+
+Benchmarking for Attention decode stage in ms
+Input size: Batch=16, Seq_len=8192, Num_heads=32, Embed_dim=128
+   Q_K^T,  Softmax,   Attn_V,    Total
+  57.301,   14.602,    0.846,   72.749
+16384
+Running on device: cuda
+
+Benchmarking for Attention decode stage in ms
+Input size: Batch=16, Seq_len=16384, Num_heads=32, Embed_dim=128
+   Q_K^T,  Softmax,   Attn_V,    Total
+  57.136,   14.570,    1.466,   73.172
+32768
+Running on device: cuda
+
+Benchmarking for Attention decode stage in ms
+Input size: Batch=16, Seq_len=32768, Num_heads=32, Embed_dim=128
+   Q_K^T,  Softmax,   Attn_V,    Total
+  57.177,   14.540,    2.703,   74.421
+
+
+for batch in {16,32,64,128,256,512,1024}; do echo $batch; CUDA_VISIBLE_DEVICES=3 python bench_llm_ops.py --bench attn --stage decode --batch $batch --seq-len 2048; done                            ─╯
+16
+Running on device: cuda
+
+Benchmarking for Attention decode stage in ms
+Input size: Batch=16, Seq_len=2048, Num_heads=32, Embed_dim=128
+   Q_K^T,  Softmax,   Attn_V,    Total
+  55.574,   14.376,    0.317,   70.267
+32
+Running on device: cuda
+
+Benchmarking for Attention decode stage in ms
+Input size: Batch=32, Seq_len=2048, Num_heads=32, Embed_dim=128
+   Q_K^T,  Softmax,   Attn_V,    Total
+  56.827,   14.558,    0.542,   71.926
+64
+Running on device: cuda
+
+Benchmarking for Attention decode stage in ms
+Input size: Batch=64, Seq_len=2048, Num_heads=32, Embed_dim=128
+   Q_K^T,  Softmax,   Attn_V,    Total
+  54.442,   13.720,    0.838,   69.000
+128
+Running on device: cuda
+
+Benchmarking for Attention decode stage in ms
+Input size: Batch=128, Seq_len=2048, Num_heads=32, Embed_dim=128
+   Q_K^T,  Softmax,   Attn_V,    Total
+  54.396,   13.736,    1.467,   69.600
+256
+Running on device: cuda
+
+Benchmarking for Attention decode stage in ms
+Input size: Batch=256, Seq_len=2048, Num_heads=32, Embed_dim=128
+   Q_K^T,  Softmax,   Attn_V,    Total
+  57.505,   14.578,    2.769,   74.852
+512
+Running on device: cuda
+
+Benchmarking for Attention decode stage in ms
+Input size: Batch=512, Seq_len=2048, Num_heads=32, Embed_dim=128
+   Q_K^T,  Softmax,   Attn_V,    Total
+  58.283,   13.876,    5.276,   77.435
+1024
+Running on device: cuda
+
+Benchmarking for Attention decode stage in ms
+Input size: Batch=1024, Seq_len=2048, Num_heads=32, Embed_dim=128
+   Q_K^T,  Softmax,   Attn_V,    Total
+  71.074,   14.707,   10.565,   96.347
+
+  ------
+  Fused
+
+for s in {256,512,1024,2048,4096,8192,16384,32768}; do echo $s; CUDA_VISIBLE_DEVICES=3 python bench_llm_ops.py --bench attn --stage decode --batch 16 --seq-len $s --fused; done                    ─╯
+256
+Running on device: cuda
+
+Benchmarking for Attention decode stage in ms
+Input size: Batch=16, Seq_len=256, Num_heads=32, Embed_dim=128
+   Total
+   0.123
+512
+Running on device: cuda
+
+Benchmarking for Attention decode stage in ms
+Input size: Batch=16, Seq_len=512, Num_heads=32, Embed_dim=128
+   Total
+   0.233
+1024
+Running on device: cuda
+
+Benchmarking for Attention decode stage in ms
+Input size: Batch=16, Seq_len=1024, Num_heads=32, Embed_dim=128
+   Total
+   0.454
+2048
+Running on device: cuda
+
+Benchmarking for Attention decode stage in ms
+Input size: Batch=16, Seq_len=2048, Num_heads=32, Embed_dim=128
+   Total
+   0.900
+4096
+Running on device: cuda
+
+Benchmarking for Attention decode stage in ms
+Input size: Batch=16, Seq_len=4096, Num_heads=32, Embed_dim=128
+   Total
+   1.862
+8192
+Running on device: cuda
+
+Benchmarking for Attention decode stage in ms
+Input size: Batch=16, Seq_len=8192, Num_heads=32, Embed_dim=128
+   Total
+   3.773
+16384
+Running on device: cuda
+
+Benchmarking for Attention decode stage in ms
+Input size: Batch=16, Seq_len=16384, Num_heads=32, Embed_dim=128
+   Total
+   7.481
+32768
+Running on device: cuda
+
+Benchmarking for Attention decode stage in ms
+Input size: Batch=16, Seq_len=32768, Num_heads=32, Embed_dim=128
+   Total
+  15.087
+
+for batch in {16,32,64,128,256,512,1024}; do echo $batch; CUDA_VISIBLE_DEVICES=3 python bench_llm_ops.py --bench attn --stage decode --batch $batch --seq-len 2048 --fused; done                    ─╯
+16
+Running on device: cuda
+
+Benchmarking for Attention decode stage in ms
+Input size: Batch=16, Seq_len=2048, Num_heads=32, Embed_dim=128
+   Total
+   0.890
+32
+Running on device: cuda
+
+Benchmarking for Attention decode stage in ms
+Input size: Batch=32, Seq_len=2048, Num_heads=32, Embed_dim=128
+   Total
+   1.858
+64
+Running on device: cuda
+
+Benchmarking for Attention decode stage in ms
+Input size: Batch=64, Seq_len=2048, Num_heads=32, Embed_dim=128
+   Total
+   3.770
+128
+Running on device: cuda
+
+Benchmarking for Attention decode stage in ms
+Input size: Batch=128, Seq_len=2048, Num_heads=32, Embed_dim=128
+   Total
+   7.591
+256
+Running on device: cuda
+
+Benchmarking for Attention decode stage in ms
+Input size: Batch=256, Seq_len=2048, Num_heads=32, Embed_dim=128
+   Total
+  15.315
+512
+Running on device: cuda
+
+Benchmarking for Attention decode stage in ms
+Input size: Batch=512, Seq_len=2048, Num_heads=32, Embed_dim=128
+   Total
+  31.171
+1024
+Running on device: cuda
+
+Benchmarking for Attention decode stage in ms
+Input size: Batch=1024, Seq_len=2048, Num_heads=32, Embed_dim=128
+   Total
+  63.273
